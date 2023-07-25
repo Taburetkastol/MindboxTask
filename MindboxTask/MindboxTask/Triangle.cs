@@ -1,6 +1,6 @@
 ﻿namespace MindboxTask
 {
-    public class Triangle : IShape
+    public class Triangle : Shape
     {
         private double _a = 0, _b = 0, _c = 0;
 
@@ -45,7 +45,7 @@
         #endregion
 
         #region public: Methods
-        public double GetArea()
+        public override double GetArea()
         {
             if (!IsExist()) throw new ArgumentException("Triangle doesn't exist.");
             var p = (A + B + C) / 2;

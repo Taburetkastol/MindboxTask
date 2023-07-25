@@ -17,7 +17,7 @@ namespace TestMindboxTask
         }
 
         [Test]
-        public void CatchNegativeRadiusException() 
+        public void CatchNegativeRadiusException()
         {
             var circle = new Circle();
             Assert.Catch(() => { circle.Radius = -1; });
@@ -35,6 +35,16 @@ namespace TestMindboxTask
         {
             var circle = new Circle(5);
             Assert.That(circle.Radius, Is.EqualTo(5));
+        }
+
+        [Test]
+        public void CallUnknownTypeMethod()
+        {
+            Shape shape;
+            shape = new Circle(2);
+            Assert.That(shape.GetArea(), Is.EqualTo(12.566370614359172));
+            shape = new Triangle(3, 4, 5);
+            Assert.That(shape.GetArea(), Is.EqualTo(6));
         }
     }
 }

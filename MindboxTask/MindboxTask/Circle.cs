@@ -1,6 +1,6 @@
 ﻿namespace MindboxTask
 {
-    public class Circle : IShape
+    public class Circle : Shape
     {
         private double _radius;
 
@@ -22,7 +22,7 @@
         #endregion
 
         #region public: Methods
-        public double GetArea()
+        public override double GetArea()
         {
             return Math.PI * Radius * Radius;
         }
