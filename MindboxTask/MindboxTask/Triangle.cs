@@ -2,7 +2,7 @@
 {
     public class Triangle : IShape
     {
-        private double _a, _b, _c;
+        private double _a = 0, _b = 0, _c = 0;
 
         #region public: Fields
         public double A
@@ -35,40 +35,35 @@
         #endregion
 
         #region public: Constructors
-        public Triangle()
-        {
-            A = 0;
-            B = 0;
-            C = 0;
-        }
-
         public Triangle(double a, double b, double c)
         {
             A = a;
             B = b;
             C = c;
-            var sides = new double[] { A, B, C };
-            Array.Sort(sides);
-            if (sides[0] + sides[1] < sides[2])
-            {
-                throw new ArgumentException("Triangle doesn't exist.");
-            }
+            if (!IsExist()) throw new ArgumentException("Triangle doesn't exist.");
         }
         #endregion
 
         #region public: Methods
         public double GetArea()
         {
-            var sides = new double[] { A, B, C };
-            Array.Sort(sides);
-            if (sides[0] + sides[1] < sides[2])
-            {
-                throw new ArgumentException("Triangle doesn't exist.");
-            }
+            if (!IsExist()) throw new ArgumentException("Triangle doesn't exist.");
             var p = (A + B + C) / 2;
 
             return Math.Sqrt(p * (p - A) * (p - B) * (p - C));
         }
         #endregion
+
+        private bool IsExist()
+        {
+            var sides = new double[] { A, B, C };
+            Array.Sort(sides);
+            if (sides[0] + sides[1] < sides[2])
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

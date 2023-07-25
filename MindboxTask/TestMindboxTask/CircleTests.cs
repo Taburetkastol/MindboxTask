@@ -11,9 +11,9 @@ namespace TestMindboxTask
             circle.Radius = 0;
             var area = circle.GetArea();
             Assert.That(area, Is.EqualTo(0));
-            circle.Radius = int.MaxValue;
+            circle.Radius = double.MaxValue;
             area = circle.GetArea();
-            Assert.That(area, Is.EqualTo(1.4488038902661206E+19d));
+            Assert.That(area, Is.EqualTo(double.PositiveInfinity));
         }
 
         [Test]
