@@ -46,5 +46,12 @@ namespace TestMindboxTask
         {
             Assert.Catch(() => { new Triangle(1, 1, 10).GetArea(); });
         }
+
+        [Test]
+        public void TestIsRightTriangle()
+        {
+            Assert.That(new Triangle(3, 4, 5).IsRight(), Is.EqualTo(true));
+            Assert.That(new Triangle(1, 4, 5).IsRight(), Is.EqualTo(false));
+        }
     }
 }
